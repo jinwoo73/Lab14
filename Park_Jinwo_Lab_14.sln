@@ -1,23 +1,91 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2026
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Park_Jinwo_Lab_14", "Park_Jinwo_Lab_14\Park_Jinwo_Lab_14.pyproj", "{6D11CF16-340F-4DFD-B6CB-8E3B818F29CC}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6D11CF16-340F-4DFD-B6CB-8E3B818F29CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D11CF16-340F-4DFD-B6CB-8E3B818F29CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8059031F-DC0D-4C4E-8C29-43253A159A32}
-	EndGlobalSection
-EndGlobal
+#LinearBinarySearch
+import random
+def linearSearch(searchArray,item,start=0):
+    for i in range(start,len(searchArray)):
+        if searchArray[i] == item:
+            return i+1
+    return -1
+def binarySearch(alist,item):
+    first = 0
+    last = len(alist) - 1
+    found = False
+    count = 0
+    while first <= last and not found:
+        midpoint = (first + last)//2
+        if alist[midpoint] == item:
+            found = True
+        else:
+            if item < alist[midpoint]:
+                last = midpoint -1
+            else:
+                first = midpoint +1
+            count = count+1
+    return count
+
+def test():
+    numbers=[]
+    for i in range(0,10):
+        numbers.append(int(input("Enter numbers in array")))
+    print ("Array Values: ", numbers)
+    target = int(input("Enter your target"))
+    result1 = linearSearch(numbers,target,start=0)
+    result2 = binarySearch(numbers,target)
+    print ("Linear Search Comparisions: ",result1)
+    print ("Binary Search Comparisons:",result2)
+test()
+
+#SimpleSort
+def bubblesort(unsorted):
+    count = 0
+    for i in range(len(unsorted)):
+        for j in range(0,(len(unsorted)-i-1)):
+            if unsorted[j] > unsorted[j+1]:
+                temp = unsorted[j]
+                unsorted[j] = unsorted[j+1]
+                unsorted[j+1] = temp
+                count  +=1
+    return count
+    
+                
+
+def insertionsort(unsorted):
+    count = 0
+    for i in range(1,len(unsorted)):
+        currentvalue = unsorted[i]
+        position = i
+
+        while position >0 and unsorted[position-1]> currentvalue:
+            unsorted[position] = unsorted[position-1]
+            position = position -1
+            count +=1
+        unsorted[position] = currentvalue
+    return count
+
+def selectionsort(unsorted):
+    count =0
+    for i in range(0,len(unsorted)-1):
+        minPos = i
+        for j in range(i+1, len(unsorted)):
+            if unsorted[j] < unsorted[minPos]:
+                minPos = j
+        if i != minPos:
+            temp = unsorted[minPos]
+            unsorted[minPos] =  unsorted[i]
+            unsorted[i] = temp
+            count += 1
+    return count
+
+import random
+def test():
+    numbers = [0] * 50
+    for x in range(50):
+        numbers[x] = random.randint(0, 100)
+    print(numbers)
+    bubblesort(numbers)
+    print (numbers)
+    print (bubblesort(numbers))
+    insertionsort(numbers)
+    print(numbers)
+    print (insertionsort(numbers))
+test()
