@@ -84,14 +84,14 @@ def randomNum():
 import random
 def test1():
     numbers = randomNum()
-    print(numbers) # prints random list of numbers
+    print("Unsorted List: ", numbers) # prints random list of numbers
     
-    print(bubblesort(numbers)) # prints number of swaps required to sort array
-    print (numbers) # prints sorted array
+    print("Bubble Sort # of Swaps: ", bubblesort(numbers)) # prints number of swaps required to sort array
+    print ("Sorted List: ", numbers) # prints sorted array
     
     numbers = randomNum()
-    print(numbers)
+    print("\nUnsorted List: ",numbers)
 
-    print(insertionsort(numbers)) # prints number of swaps required to sort array
-    print(numbers) #prints sorted array
+    print("Insertion Sort # of Swaps: ",insertionsort(numbers)) # prints number of swaps required to sort array
+    print("Sorted List: ",numbers) #prints sorted array
 test1()
