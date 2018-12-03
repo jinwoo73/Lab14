@@ -1,4 +1,3 @@
-﻿
 #LinearBinarySearch
 import random
 def linearSearch(searchArray,item,start=0):
@@ -44,7 +43,7 @@ def bubblesort(unsorted):
                 temp = unsorted[j]
                 unsorted[j] = unsorted[j+1]
                 unsorted[j+1] = temp
-                count  +=1
+                count  = count + 1
     return count
     
                 
@@ -58,7 +57,7 @@ def insertionsort(unsorted):
         while position >0 and unsorted[position-1]> currentvalue:
             unsorted[position] = unsorted[position-1]
             position = position -1
-            count +=1
+            count = count + 1
         unsorted[position] = currentvalue
     return count
 
@@ -75,17 +74,24 @@ def selectionsort(unsorted):
             unsorted[i] = temp
             count += 1
     return count
-
-import random
-def test():
+def randomNum():
     numbers = [0] * 50
     for x in range(50):
         numbers[x] = random.randint(0, 100)
+    return numbers
+    
+
+import random
+def test1():
+    numbers = randomNum()
+    print(numbers) # prints random list of numbers
+    
+    print(bubblesort(numbers)) # prints number of swaps required to sort array
+    print (numbers) # prints sorted array
+    
+    numbers = randomNum()
     print(numbers)
-    bubblesort(numbers)
-    print (numbers)
-    print (bubblesort(numbers))
-    insertionsort(numbers)
-    print(numbers)
-    print (insertionsort(numbers))
-test()
+
+    print(insertionsort(numbers)) # prints number of swaps required to sort array
+    print(numbers) #prints sorted array
+test1()
